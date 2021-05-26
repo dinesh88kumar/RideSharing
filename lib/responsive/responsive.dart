@@ -21,7 +21,7 @@ class _ResponsiveState extends State<Responsive> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 550) {
+        if (constraints.maxWidth < 585) {
           return widget.mobile;
         }
         if (constraints.maxWidth < 950) {
