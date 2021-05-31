@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:hovering/hovering.dart';
 
 import 'package:smoose_20_05/responsive/pages/Payments/payments.dart';
+import 'package:smoose_20_05/responsive/pages/analytics/analytics.dart';
 import 'package:smoose_20_05/responsive/pages/billing/billing.dart';
 import 'package:smoose_20_05/responsive/pages/dashboard/Dashboard.dart';
 import 'package:smoose_20_05/responsive/pages/feedbacks/Feedbacks.dart';
@@ -14,14 +15,23 @@ import 'package:smoose_20_05/responsive/pages/hotels/managers.dart';
 import 'package:smoose_20_05/responsive/pages/hotels/menu.dart';
 import 'package:smoose_20_05/responsive/responsive.dart';
 
+int index = 0;
+List<Widget> list = [
+  Dashboard(),
+  Payments(),
+  Analytics(),
+  Manager(),
+  Menu1(),
+  FeedBack(),
+  Billingpage()
+];
+
 class RoutePage extends StatefulWidget {
   @override
   _RoutePageState createState() => _RoutePageState();
 }
 
 class _RoutePageState extends State<RoutePage> {
-  int index = 0;
-  List<Widget> list = [Dashboard(), Payments(), Manager(), Menu(), Feedbacks()];
   bool closed = true;
 
   @override
@@ -65,7 +75,6 @@ class Navigation extends StatefulWidget {
   var b1;
   var e;
   var f;
-
   bool closed;
 
   Navigation(
@@ -75,16 +84,6 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  int index = 0;
-  List<Widget> list = [
-    Dashboard(),
-    Payments(),
-    Manager(),
-    Menu(),
-    Feedbacks(),
-    Billing()
-  ];
-
   // bool closed = true;
   @override
   Widget build(BuildContext context) {
@@ -309,6 +308,8 @@ class _NavigationState extends State<Navigation> {
                         SizedBox(height: 10),
                         gest('Payments', 1, Icon(Icons.monetization_on)),
                         SizedBox(height: 10),
+                        gest('Analytics', 2, Icon(Icons.leaderboard)),
+                        SizedBox(height: 10),
                         GestureDetector(
                           onTap: () {},
                           child: ExpansionTile(
@@ -318,7 +319,7 @@ class _NavigationState extends State<Navigation> {
                               children: [
                                 Icon(
                                   Icons.horizontal_split_outlined,
-                                  color: index == 2 || index == 3
+                                  color: index == 3 || index == 4
                                       ? Color(0xffff5a1e)
                                       : Colors.grey,
                                 ),
@@ -326,7 +327,7 @@ class _NavigationState extends State<Navigation> {
                                 Text(
                                   'Hotels',
                                   style: TextStyle(
-                                    color: index == 2 || index == 3
+                                    color: index == 3 || index == 4
                                         ? Color(0xffff5a1e)
                                         : Colors.grey,
                                   ),
@@ -334,22 +335,24 @@ class _NavigationState extends State<Navigation> {
                               ],
                             ),
                             children: [
-                              gest('Manager', 2,
+                              gest('Manager', 3,
                                   Icon(Icons.account_box_rounded)),
-                              gest('Menu', 3, Icon(Icons.no_food))
+                              gest('Menu', 4, Icon(Icons.no_food))
                             ],
                           ),
                         ),
                         SizedBox(height: 10),
-                        gest('feedbacks', 4, Icon(Icons.feedback)),
+                        gest('feedbacks', 5, Icon(Icons.feedback)),
                         SizedBox(height: 10),
-                        gest('Billing', 5, Icon(Icons.assignment))
+                        gest('Billing', 6, Icon(Icons.assignment))
                       ])
                     : Column(
                         children: [
                           gest1(0, Icon(Icons.dashboard)),
                           SizedBox(height: 10),
                           gest1(1, Icon(Icons.monetization_on)),
+                          SizedBox(height: 10),
+                          gest1(2, Icon(Icons.leaderboard)),
                           SizedBox(height: 10),
                           GestureDetector(
                             onTap: () {},
@@ -361,22 +364,22 @@ class _NavigationState extends State<Navigation> {
                                   SizedBox(width: 10),
                                   Icon(
                                     Icons.horizontal_split_outlined,
-                                    color: index == 2 || index == 3
+                                    color: index == 3 || index == 4
                                         ? Color(0xffff5a1e)
                                         : Colors.grey,
                                   ),
                                 ],
                               ),
                               children: [
-                                gest1(2, Icon(Icons.account_box_rounded)),
-                                gest1(3, Icon(Icons.no_food))
+                                gest1(3, Icon(Icons.account_box_rounded)),
+                                gest1(4, Icon(Icons.no_food))
                               ],
                             ),
                           ),
                           SizedBox(height: 10),
-                          gest1(4, Icon(Icons.feedback)),
+                          gest1(5, Icon(Icons.feedback)),
                           SizedBox(height: 10),
-                          gest1(5, Icon(Icons.assignment))
+                          gest1(6, Icon(Icons.assignment))
                         ],
                       )),
             Container(
@@ -477,15 +480,6 @@ class Mobile extends StatefulWidget {
 }
 
 class _MobileState extends State<Mobile> {
-  int index = 0;
-  List<Widget> list = [
-    Dashboard(),
-    Payments(),
-    Manager(),
-    Menu(),
-    Feedbacks(),
-    Billing()
-  ];
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool close = true;
   void _openDrawer() {
@@ -660,20 +654,24 @@ class _MydrawerState extends State<Mydrawer> {
                 onTap: () => widget.ontap(context, 1)),
             ListTile(
                 leading: Icon(Icons.contacts),
-                title: Text("manager"),
+                title: Text("Analytics"),
                 onTap: () => widget.ontap(context, 2)),
             ListTile(
                 leading: Icon(Icons.contacts),
-                title: Text("menu"),
+                title: Text("manager"),
                 onTap: () => widget.ontap(context, 3)),
             ListTile(
                 leading: Icon(Icons.contacts),
-                title: Text("feedbacks"),
+                title: Text("menu"),
                 onTap: () => widget.ontap(context, 4)),
+            ListTile(
+                leading: Icon(Icons.contacts),
+                title: Text("feedbacks"),
+                onTap: () => widget.ontap(context, 5)),
             ListTile(
                 leading: Icon(Icons.assignment),
                 title: Text("Billing"),
-                onTap: () => widget.ontap(context, 5)),
+                onTap: () => widget.ontap(context, 6)),
           ],
         ),
       ),

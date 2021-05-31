@@ -66,15 +66,19 @@ class _SummaryState extends State<Summary> {
                         )
                       ],
                     ),
-                    Column(
-                      children: [
-                        Text('Manage Notifications',
-                            style: GoogleFonts.montserrat(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffff5a1e))),
-                        Icon(Icons.arrow_forward_ios, color: Color(0xffff5a1e))
-                      ],
+                    GestureDetector(
+                      onTap: () {},
+                      child: Column(
+                        children: [
+                          Text('Manage Notifications',
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xffff5a1e))),
+                          Icon(Icons.arrow_forward_ios,
+                              color: Color(0xffff5a1e))
+                        ],
+                      ),
                     )
                   ],
                 ),
